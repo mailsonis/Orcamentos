@@ -16,7 +16,7 @@ export default defineConfig({
   },
   build: {
     outDir: 'dist',
-    sourcemap: false,
-    minify: 'terser'
+    sourcemap: false
+    // Removido 'minify: terser' para usar o esbuild padrão do Vite
   }
 });
