@@ -1,4 +1,3 @@
-
 import React, { useState, useMemo, useCallback, useRef, useEffect } from 'react';
 import { onAuthStateChanged, User } from "firebase/auth";
 import { doc, getDoc, setDoc } from "firebase/firestore";
@@ -70,10 +69,14 @@ const App: React.FC = () => {
     try {
       const base64 = await fileToBase64(file);
       const extractedItems = await analyzeBudgetPhoto(base64);
-      setItems(prev => [...prev, ...extractedItems]);
-    } catch (error) {
+      if (extractedItems.length > 0) {
+        setItems(prev => [...prev, ...extractedItems]);
+      } else {
+        alert("Nenhum item pôde ser identificado na imagem. Tente uma foto mais nítida.");
+      }
+    } catch (error: any) {
       console.error("Erro ao analisar imagem:", error);
-      alert("Houve um erro ao analisar a imagem. Tente novamente.");
+      alert(error.message || "Houve um erro ao analisar a imagem. Tente novamente.");
     } finally {
       setIsAnalyzing(false);
       if (event.target) event.target.value = '';
@@ -122,11 +125,11 @@ const App: React.FC = () => {
     setTimeout(async () => {
       try {
         const canvas = await html2canvas(budgetRef.current!, {
-          scale: 2.5, // Equilíbrio entre qualidade e performance
+          scale: 2.5,
           backgroundColor: "#ffffff",
           useCORS: true,
           logging: false,
-          width: 1200, // Largura exata do documento para preencher o PNG
+          width: 1200,
           onclone: (clonedDoc) => {
              const container = clonedDoc.querySelector('[data-capture-container]') as HTMLElement;
              if (container) {
@@ -139,10 +142,10 @@ const App: React.FC = () => {
              if (paper) {
                paper.style.width = '1200px';
                paper.style.margin = '0';
-               paper.style.padding = '40px'; // Padding interno para o conteúdo não tocar a borda absoluta do arquivo
+               paper.style.padding = '40px';
                paper.style.backgroundColor = 'white';
-               paper.style.boxShadow = 'none'; // Remove a sombra para o fundo ficar plano no PNG
-               paper.style.borderRadius = '0'; // Remove arredondamento para ocupar todos os cantos
+               paper.style.boxShadow = 'none';
+               paper.style.borderRadius = '0';
              }
           }
         });
@@ -175,13 +178,11 @@ const App: React.FC = () => {
 
   return (
     <div className={`min-h-screen ${isCapturing ? 'bg-white overflow-hidden' : 'bg-slate-50'}`}>
-      {/* Wrapper de Captura */}
       <div 
         ref={budgetRef} 
         data-capture-container 
         className={isCapturing ? "w-[1200px]" : "pb-24"}
       >
-        {/* Folha do Orçamento */}
         <div 
           data-budget-paper
           className={isCapturing ? "w-[1200px] bg-white p-12" : "w-full"}
