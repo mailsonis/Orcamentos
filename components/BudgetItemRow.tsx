@@ -22,7 +22,7 @@ const BudgetItemRow: React.FC<BudgetItemRowProps> = ({ item, onUpdate, onRemove,
         <td className="py-8 px-6 text-slate-800 text-2xl font-medium">
           {item.description}
         </td>
-        <td className="py-8 px-6 text-slate-600 text-2xl">
+        <td className="py-8 px-6 text-slate-600 text-2xl text-center">
           {formatCurrency(item.unitPrice)}
         </td>
         <td className="py-8 px-6 font-black text-slate-900 text-right text-2xl">
@@ -61,7 +61,7 @@ const BudgetItemRow: React.FC<BudgetItemRowProps> = ({ item, onUpdate, onRemove,
             step="0.01"
             value={item.unitPrice || ""}
             onChange={(e) => onUpdate(item.id, { unitPrice: Number(e.target.value) })}
-            className="w-16 md:w-24 bg-transparent border-b border-transparent focus:border-emerald-500 outline-none text-center md:text-left"
+            className="w-16 md:w-24 bg-transparent border-b border-transparent focus:border-emerald-500 outline-none text-center"
             placeholder="0,00"
           />
         </div>

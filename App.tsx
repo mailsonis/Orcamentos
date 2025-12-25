@@ -266,21 +266,6 @@ const App: React.FC = () => {
 
             <div className={`${isCapturing ? 'p-16' : 'p-10'} flex flex-col items-end border-t border-slate-200 ${isCapturing ? 'bg-white' : 'bg-slate-50'}`}>
               <div className={`${isCapturing ? 'w-[500px]' : 'w-full md:w-96'} space-y-6`}>
-                <div className={`flex justify-between text-slate-500 font-bold ${isCapturing ? 'text-2xl' : 'text-base'}`}>
-                  <span>Subtotal Bruto</span>
-                  <span>{formatCurrency(summary.subtotal)}</span>
-                </div>
-                
-                <div className={`flex justify-between items-center bg-emerald-50 ${isCapturing ? 'p-8 rounded-[2rem]' : 'p-4 rounded-2xl'} border border-emerald-100`}>
-                  <div className="flex flex-col">
-                    <span className={`text-emerald-700 font-black ${isCapturing ? 'text-xl' : 'text-sm'}`}>Desconto À Vista</span>
-                    <span className={`${isCapturing ? 'text-sm' : 'text-[10px]'} text-emerald-600 uppercase tracking-widest font-black`}>Economize 10%</span>
-                  </div>
-                  <span className={`text-emerald-700 font-black ${isCapturing ? 'text-2xl' : ''}`}>-{formatCurrency(summary.discountCash)}</span>
-                </div>
-
-                <div className={`bg-slate-200 ${isCapturing ? 'h-1 my-10' : 'h-px my-6'}`}></div>
-
                 <div className="flex justify-between items-baseline">
                   <span className={`${isCapturing ? 'text-3xl' : 'text-2xl'} font-black text-slate-900`}>Total Geral</span>
                   <div className="text-right">
