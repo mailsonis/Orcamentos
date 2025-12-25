@@ -206,13 +206,13 @@ const App: React.FC = () => {
           <section className={`bg-white rounded-[2rem] ${isCapturing ? 'border-none' : 'shadow-lg border border-slate-200 overflow-hidden'}`}>
             {!isCapturing && (
               <div className="p-6 md:p-8 bg-slate-50 border-b border-slate-200 flex justify-between items-center no-print">
-                <h3 className="font-bold text-slate-800 text-lg">Itens do Orçamento</h3>
+                <h3 className="font-bold text-slate-800 text-lg">Itens</h3>
                 <button 
                   onClick={handleAddItem}
                   className="flex items-center gap-2 bg-white px-4 py-2 rounded-xl border border-slate-200 text-slate-700 font-medium hover:bg-slate-50 transition-colors shadow-sm"
                 >
                   <svg className="w-5 h-5 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m8-8H4"></path></svg>
-                  Adicionar Item
+                  Adicionar
                 </button>
               </div>
             )}
@@ -222,7 +222,7 @@ const App: React.FC = () => {
                 <thead>
                   <tr className="bg-slate-50 text-slate-400 text-xs font-bold uppercase tracking-wider border-b border-slate-200">
                     <th className="py-5 px-6 w-24 text-center">Qtd</th>
-                    <th className="py-5 px-6">Descrição do Produto</th>
+                    <th className="py-5 px-6">Produto</th>
                     <th className="py-5 px-6 w-40">Valor Unit.</th>
                     <th className="py-5 px-6 w-40 text-right">Total</th>
                     {!isCapturing && <th className="py-5 px-6 w-16 no-print"></th>}
@@ -262,8 +262,8 @@ const App: React.FC = () => {
                 
                 <div className="flex justify-between items-center bg-emerald-50 p-4 rounded-2xl border border-emerald-100">
                   <div className="flex flex-col">
-                    <span className="text-emerald-700 font-bold text-sm">Desconto Pagamento À Vista</span>
-                    <span className="text-[10px] text-emerald-600 uppercase tracking-wider font-bold">Economize 10% agora</span>
+                    <span className="text-emerald-700 font-bold text-sm">Desconto À Vista</span>
+                    <span className="text-[10px] text-emerald-600 uppercase tracking-wider font-bold">Economize 10% </span>
                   </div>
                   <span className="text-emerald-700 font-black">-{formatCurrency(summary.discountCash)}</span>
                 </div>
@@ -280,14 +280,14 @@ const App: React.FC = () => {
                 </div>
                 
                 <div className="p-6 rounded-3xl border-2 border-emerald-500 bg-white mt-6 shadow-sm">
-                  <p className="text-xs text-emerald-600 font-black uppercase mb-1 tracking-widest text-center">Valor para Pagamento Pix</p>
+                  <p className="text-xs text-emerald-600 font-black uppercase mb-1 tracking-widest text-center">Valor no Dinheiro, Pix, Cartão Venc.</p>
                   <p className="text-4xl font-black text-emerald-600 text-center">{formatCurrency(summary.total - summary.discountCash)}</p>
                 </div>
               </div>
             </div>
             
             <div className="p-10 text-center text-slate-400 text-xs border-t border-slate-100">
-              <p className="font-bold mb-2">Este orçamento é válido por 5 dias corridos.</p>
+              <p className="font-bold mb-2">Este orçamento é válido por 30 dias corridos.</p>
               <p>{companyInfo.name} agradece a sua preferência!</p>
               <p className="mt-4 opacity-40 uppercase tracking-widest text-[9px]">Gerado por Sistema de Orçamentos Inteligente</p>
             </div>
