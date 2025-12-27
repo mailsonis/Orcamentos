@@ -1,5 +1,5 @@
 {
-  "name": "Smart Budgeting AI",
+  "name": "Orçamento Inteligente",
   "description": "A professional AI-powered budgeting system that extracts items from photos, calculates totals, and generates professional PDF-ready quotes.",
   "requestFramePermissions": [
     "camera"
